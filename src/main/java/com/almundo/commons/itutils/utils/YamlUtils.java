@@ -29,4 +29,20 @@ public class YamlUtils {
         }
     
     }   
+    
+    public static void replace_cassandra_file(Integer port){
+        try {
+            StringBuilder urlBuilder = new StringBuilder();
+            urlBuilder.append(System.getProperty("user.dir"));
+            urlBuilder.append("/src/main/resources/cu-cassandra-ownport.yaml");
+            Path path = Paths.get(urlBuilder.toString());
+            Charset charset = StandardCharsets.UTF_8;
+            String content = new String(Files.readAllBytes(path), charset);
+            content = content.replaceAll(DataBasesPortsVariables.CASSANDRA_PORT.getValue(),port.toString());
+            Files.write(path, content.getBytes(charset));
+        } catch (IOException e) {
+           LOG.error("Failed to replace ports variables");
+        }
+    
+    }  
 }
