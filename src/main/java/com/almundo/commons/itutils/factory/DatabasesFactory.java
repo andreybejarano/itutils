@@ -2,41 +2,48 @@ package com.almundo.commons.itutils.factory;
 
 import java.util.Objects;
 
-import com.almundo.commons.itutils.connections.EmbeddedCassandraService;
-import com.almundo.commons.itutils.connections.EmbeddedHsqlService;
-import com.almundo.commons.itutils.connections.EmbeddedMongoService;
-import com.almundo.commons.itutils.connections.impl.EmbeddedCassandraServiceImpl;
-import com.almundo.commons.itutils.connections.impl.EmbeddedHsqlServiceImpl;
-import com.almundo.commons.itutils.connections.impl.EmbeddedMongoServiceImpl;
+import com.almundo.commons.itutils.connections.EmbeddedServer;
+import com.almundo.commons.itutils.connections.impl.EmbeddedCassandraServerImpl;
+import com.almundo.commons.itutils.connections.impl.EmbeddedHsqlServerImpl;
+import com.almundo.commons.itutils.connections.impl.EmbeddedMongoServerImpl;
+import com.almundo.commons.itutils.connections.impl.EmbeddedRedisServerImpl;
 
 public class DatabasesFactory {
 
     private static DatabasesFactory instance = new DatabasesFactory();;
     
-    private EmbeddedMongoService mongoService =null; 
-    private EmbeddedHsqlService hqlService =null; 
-    private EmbeddedCassandraService cassandraService=null;
+    private EmbeddedServer mongoService =null; 
+    private EmbeddedServer hqlService =null; 
+    private EmbeddedServer cassandraService=null;
+    private EmbeddedServer redisService = null;
     
-    public EmbeddedMongoService getMongoService(){
+    public EmbeddedServer getMongoService(){
         if(Objects.isNull(mongoService)){
-            mongoService = new EmbeddedMongoServiceImpl();
+            mongoService = new EmbeddedMongoServerImpl();
         }
         return mongoService;
     }
     
-    public EmbeddedHsqlService getHsqlService(){
+    public EmbeddedServer getHsqlService(){
         if(Objects.isNull(hqlService)){
-            hqlService = new EmbeddedHsqlServiceImpl();
+            hqlService = new EmbeddedHsqlServerImpl();
         }
         return hqlService;
         
     }
     
-    public EmbeddedCassandraService getCassandraService(){
+    public EmbeddedServer getCassandraService(){
         if(Objects.isNull(cassandraService)){
-            cassandraService = new EmbeddedCassandraServiceImpl();
+            cassandraService = new EmbeddedCassandraServerImpl();
         }
         return cassandraService;
+    }
+    
+    public EmbeddedServer getRedisSerivce(){
+        if(Objects.isNull(redisService)){
+            redisService = new EmbeddedRedisServerImpl();
+        }
+        return redisService;
     }
 
     public static DatabasesFactory getInstance() {

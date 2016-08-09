@@ -2,8 +2,8 @@ package com.almundo.commons.itutils.connections.impl;
 
 import java.io.IOException;
 
-import com.almundo.commons.itutils.connections.EmbeddedMongoService;
-import com.almundo.commons.itutils.utils.DataBasesPortsVariables;
+import com.almundo.commons.itutils.connections.EmbeddedServer;
+import com.almundo.commons.itutils.utils.DataBasesPort;
 import com.almundo.commons.itutils.utils.PortsManagerUtils;
 import com.almundo.commons.itutils.utils.YamlUtils;
 
@@ -14,7 +14,7 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 
-public class EmbeddedMongoServiceImpl implements EmbeddedMongoService {
+public class EmbeddedMongoServerImpl implements EmbeddedServer {
 
     
    private  MongodExecutable mongodExecutable;
@@ -26,7 +26,7 @@ public class EmbeddedMongoServiceImpl implements EmbeddedMongoService {
         mongodExecutable = prepareServer();
         try {
             mongodExecutable .start();
-            YamlUtils.replace_ports_variables(mongoPort, DataBasesPortsVariables.MONGO_PORT);
+            YamlUtils.addPort(mongoPort, DataBasesPort.MONGO_PORT);
         } catch (IOException e) {
             throw new IllegalAccessError("Failed to initialize embedded mongo server");
         }

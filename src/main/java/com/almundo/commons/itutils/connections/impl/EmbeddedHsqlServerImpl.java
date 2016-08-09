@@ -2,16 +2,16 @@ package com.almundo.commons.itutils.connections.impl;
 
 import org.hsqldb.Server;
 
-import com.almundo.commons.itutils.connections.EmbeddedHsqlService;
-import com.almundo.commons.itutils.utils.DataBasesPortsVariables;
+import com.almundo.commons.itutils.connections.EmbeddedServer;
+import com.almundo.commons.itutils.utils.DataBasesPort;
 import com.almundo.commons.itutils.utils.PortsManagerUtils;
 import com.almundo.commons.itutils.utils.YamlUtils;
 
-public class EmbeddedHsqlServiceImpl implements EmbeddedHsqlService {
+public class EmbeddedHsqlServerImpl implements EmbeddedServer {
 
     private Server server;
     private Integer hsql_port;
-    
+
     @Override
     public void start_server() {
         server = new Server();
@@ -21,14 +21,14 @@ public class EmbeddedHsqlServiceImpl implements EmbeddedHsqlService {
         server.setDatabasePath(0, "jdbc:hsqldb:hsql://localhost/xdb");
         server.setAddress("127.0.0.1");
         server.start();
-        YamlUtils.replace_ports_variables(hsql_port, DataBasesPortsVariables.HQLDB_PORT);
+        YamlUtils.addPort(hsql_port, DataBasesPort.HQLDB_PORT);
         
     }
 
     @Override
     public void shutdown_server() {
         server.shutdown();
-        
+
     }
 
 }

@@ -1,6 +1,6 @@
 package com.almundo.commons.itutils.utils;
 
-public enum DataBasesPortsVariables {
+public enum DataBasesPort {
 
     MONGO_PORT("mongoPort"), 
     HQLDB_PORT("hsqlPort"), 
@@ -10,7 +10,7 @@ public enum DataBasesPortsVariables {
 
     private String value;
 
-    private DataBasesPortsVariables(String value) {
+    private DataBasesPort(String value) {
 
         this.value = value;
     }
