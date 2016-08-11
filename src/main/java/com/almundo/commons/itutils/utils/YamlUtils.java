@@ -16,9 +16,10 @@ import org.slf4j.LoggerFactory;
 public class YamlUtils {
 
     private final static Logger LOG = LoggerFactory.getLogger(YamlUtils.class);
-    private final static Map<DataBasesPort,Integer> ports = new HashMap<DataBasesPort,Integer>();
-    
-    public static void generate_yml(){
+    private final static Map<DataBasesPort,Integer> dbPorts = new HashMap<DataBasesPort,Integer>();
+    private static Integer mockServerPort;
+    private final static String MOCK_SERVER_PORT = "mockServerPort";
+    public static void generateIntegrationYml(){
         try {
             StringBuilder urlReadBuilder = new StringBuilder();
             urlReadBuilder.append(System.getProperty("user.dir"));
@@ -27,11 +28,13 @@ public class YamlUtils {
             Path writePath = Paths.get(YamlUtils.class.getClassLoader().getResource("application.yml").getPath());
             Charset charset = StandardCharsets.UTF_8;
             String content = new String(Files.readAllBytes(readPath), charset);
-            Set<DataBasesPort> portsVariables = ports.keySet();
+            Set<DataBasesPort> portsVariables = dbPorts.keySet();
             for(DataBasesPort key:portsVariables ){
-                Integer portDb =ports.get(key);
+                Integer portDb =dbPorts.get(key);
                 content = content.replaceAll(key.getValue(),portDb.toString());
             }
+            content = content.replaceAll(MOCK_SERVER_PORT,mockServerPort.toString());
+            
             Files.write(writePath, content.getBytes(charset));
         } catch (Exception e) {
            LOG.error("Failed to replace ports variables");
@@ -39,8 +42,12 @@ public class YamlUtils {
     
     }   
     
-    public static void addPort(Integer port, DataBasesPort portVariable){
-        ports.put(portVariable, port);
+    public static void addDbPort(Integer port, DataBasesPort portVariable){
+        dbPorts.put(portVariable, port);
+    }
+    
+    public static void addWSPort(Integer port){
+        mockServerPort = port;
     }
     
     public static void replace_cassandra_file(Integer port){

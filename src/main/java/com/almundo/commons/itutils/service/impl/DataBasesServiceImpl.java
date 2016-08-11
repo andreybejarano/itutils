@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.almundo.commons.itutils.connections.EmbeddedServer;
+import com.almundo.commons.itutils.connections.EmbeddedDataBaseServer;
 import com.almundo.commons.itutils.factory.DatabasesFactory;
 import com.almundo.commons.itutils.service.DataBasesService;
 import com.almundo.commons.itutils.utils.DataBases;
@@ -14,11 +14,10 @@ public class DataBasesServiceImpl implements DataBasesService {
 
     
     private List<DataBases> dataBases;
-    private Map<DataBases,EmbeddedServer> servers;
+    private Map<DataBases,EmbeddedDataBaseServer> servers;
     
-    public DataBasesServiceImpl(List<DataBases> dataBases){
-        this.dataBases = dataBases;
-        servers = new HashMap<DataBases,EmbeddedServer>();
+    public DataBasesServiceImpl(){
+        servers = new HashMap<DataBases,EmbeddedDataBaseServer>();
         servers.put(DataBases.CASSANDRA, DatabasesFactory.getInstance().getCassandraService());
         servers.put(DataBases.HQLDB, DatabasesFactory.getInstance().getHsqlService());
         servers.put(DataBases.MONGO, DatabasesFactory.getInstance().getMongoService());
@@ -26,19 +25,29 @@ public class DataBasesServiceImpl implements DataBasesService {
     }
     
     @Override
-    public void start_servers() {
+    public void startServers() {
         dataBases.stream().forEach(dataBase->{
             servers.get(dataBase).start_server();
         });
-        YamlUtils.generate_yml();
     }
 
     @Override
-    public void shutdown_servers() {
+    public void shutdownServers() {
         dataBases.stream().forEach(dataBase->{
             servers.get(dataBase).shutdown_server();
         });
         
+    }
+
+    @Override
+    public void enrollDataBases(List<DataBases> dataBases) {
+        this.dataBases = dataBases;
+     
+    }
+
+    @Override
+    public Integer getPort(DataBases dataBase) {
+        return servers.get(dataBase).getPort();
     }
 
 }

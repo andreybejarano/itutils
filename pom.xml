@@ -29,7 +29,6 @@
 		<cassandra-unit-shaded>2.1.9.2</cassandra-unit-shaded>
 		<cassandra.spring.data.version>1.2.1.RELEASE</cassandra.spring.data.version>
 		<org.slf4j.jcl-over-slf4j.version>1.7.12</org.slf4j.jcl-over-slf4j.version>
-		<configuration-utils.version>1.0.1</configuration-utils.version>
 		<rest-assured.version>2.9.0</rest-assured.version>
 		<wiremock.version>2.1.7</wiremock.version>
 	</properties>
@@ -104,13 +103,6 @@
 			<version>${cassandra.spring.data.version}</version>
 		</dependency>
 		
-		<!-- Configuration Utils -->
-		<dependency>
-			<groupId>com.almundo.commons</groupId>
-			<artifactId>configuration-utils</artifactId>
-			<version>${configuration-utils.version}</version>
-		</dependency>
-
 		<!-- Wiremock -->
 		<dependency>
 			<groupId>com.github.tomakehurst</groupId>
