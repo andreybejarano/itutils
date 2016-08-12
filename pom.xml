@@ -12,11 +12,11 @@
 	<artifactId>itutils</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
+	
 	<scm>
-		<connection>scm:git:git@gitlab.almundo.com:almundo/itutils.git</connection>
-		<developerConnection>scm:git:git@gitlab.almundo.com:almundo/itutils.git</developerConnection>
-		<url>scm:git:git@gitlab.almundo.com:almundo/itutils.git</url>
+		<connection>scm:git:git@github.com:almundocom/itutils.git</connection>
+		<developerConnection>scm:git:git@github.com:almundocom/itutils.git</developerConnection>
+		<url>scm:git:git@github.com:almundocom/itutils.git</url>
 		<tag>itutils-1.0.0</tag>
 	</scm>
 

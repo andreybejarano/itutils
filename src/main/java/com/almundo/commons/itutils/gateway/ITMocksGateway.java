@@ -6,7 +6,8 @@ import com.almundo.commons.itutils.service.DataBasesService;
 import com.almundo.commons.itutils.service.WSService;
 import com.almundo.commons.itutils.utils.DataBases;
 import com.almundo.commons.itutils.utils.YamlUtils;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.client.RemoteMappingBuilder;
+import com.github.tomakehurst.wiremock.client.ScenarioMappingBuilder;
 
 public class ITMocksGateway {
 
@@ -37,12 +38,12 @@ public class ITMocksGateway {
         wsService.shutdownMockServers();
     }
     
-    public WireMockRule getWSMockServer(){
-        return wsService.getMockServer();
-    }
-    
     public Integer dbPort(DataBases dataBase){
         return dbService.getPort(dataBase);
+    }
+    
+    public void addEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder){
+        wsService.enrollEndpoint(endpointBuilder);
     }
     
     public void generateIntegrationYml(){

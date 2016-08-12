@@ -1,10 +1,11 @@
 package com.almundo.commons.itutils.service;
 
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.client.RemoteMappingBuilder;
+import com.github.tomakehurst.wiremock.client.ScenarioMappingBuilder;
 
 public interface WSService {
     
     public void startMockServers();
     public void shutdownMockServers();
-    public WireMockRule getMockServer();
+    public void enrollEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder);
 }
