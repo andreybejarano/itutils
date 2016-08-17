@@ -5,7 +5,6 @@ public enum DataBasesPort {
     MONGO_PORT("mongoPort"), 
     HQLDB_PORT("hsqlPort"), 
     CASSANDRA_PORT("cassandraPort"),
-    ELASTIC_PORT("elasticPort"),
     REDIS_PORT("redisPort");
 
     private String value;
