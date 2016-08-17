@@ -6,7 +6,6 @@ public enum DataBases {
     MONGO("mongo"), 
     HQLDB("hsql"), 
     CASSANDRA("cassandra"),
-    ELASTIC("elastic"),
     REDIS("redis");
 
     private String value;

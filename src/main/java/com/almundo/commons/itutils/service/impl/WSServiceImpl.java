@@ -34,4 +34,11 @@ public class WSServiceImpl implements WSService {
         
     }
 
+    @Override
+    public Integer getWsPort() {
+        return mockServer.getPort();
+    }
+    
+    
+
 }

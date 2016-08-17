@@ -7,5 +7,6 @@ public interface WSService {
     
     public void startMockServers();
     public void shutdownMockServers();
+    public Integer getWsPort();
     public void enrollEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder);
 }

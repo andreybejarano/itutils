@@ -42,6 +42,10 @@ public class ITMocksGateway {
         return dbService.getPort(dataBase);
     }
     
+    public Integer wsPort(){
+        return wsService.getWsPort();
+    }
+    
     public void addEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder){
         wsService.enrollEndpoint(endpointBuilder);
     }
