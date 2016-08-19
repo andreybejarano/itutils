@@ -10,7 +10,8 @@ public class EmbeddedCassandraServerImpl implements EmbeddedDataBaseServer {
 
     private Integer port;
 
-    public void start_server() {
+    @Override
+    public void startServer() {
         try {
             EmbeddedCassandraServerHelper
                     .startEmbeddedCassandra(EmbeddedCassandraServerHelper.CASSANDRA_RNDPORT_YML_FILE);
@@ -22,7 +23,8 @@ public class EmbeddedCassandraServerImpl implements EmbeddedDataBaseServer {
 
     }
 
-    public void shutdown_server() {
+    @Override
+    public void shutdownServer() {
         EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
     }
 

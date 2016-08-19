@@ -13,7 +13,7 @@ public class EmbeddedHsqlServerImpl implements EmbeddedDataBaseServer {
     private Integer hsqlPort;
 
     @Override
-    public void start_server() {
+    public void startServer() {
         server = new Server();
         hsqlPort = PortsManagerUtils.findFreePort();
         server.setPort(hsqlPort);
@@ -26,7 +26,7 @@ public class EmbeddedHsqlServerImpl implements EmbeddedDataBaseServer {
     }
 
     @Override
-    public void shutdown_server() {
+    public void shutdownServer() {
         server.shutdown();
 
     }

@@ -26,14 +26,14 @@ public class DataBasesServiceImpl implements DataBasesService {
     @Override
     public void startServers() {
         dataBases.stream().forEach(dataBase -> {
-            servers.get(dataBase).start_server();
+            servers.get(dataBase).startServer();
         });
     }
 
     @Override
     public void shutdownServers() {
         dataBases.stream().forEach(dataBase -> {
-            servers.get(dataBase).shutdown_server();
+            servers.get(dataBase).shutdownServer();
         });
 
     }
