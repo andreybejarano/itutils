@@ -2,10 +2,7 @@ package com.almundo.commons.itutils.utils;
 
 public enum DataBasesPort {
 
-    MONGO_PORT("mongoPort"), 
-    HQLDB_PORT("hsqlPort"), 
-    CASSANDRA_PORT("cassandraPort"),
-    REDIS_PORT("redisPort");
+    MONGO_PORT("mongoPort"), HQLDB_PORT("hsqlPort"), CASSANDRA_PORT("cassandraPort"), REDIS_PORT("redisPort");
 
     private String value;
 

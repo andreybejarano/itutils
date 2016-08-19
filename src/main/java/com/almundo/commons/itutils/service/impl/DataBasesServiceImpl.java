@@ -12,37 +12,36 @@ import com.almundo.commons.itutils.utils.YamlUtils;
 
 public class DataBasesServiceImpl implements DataBasesService {
 
-    
     private List<DataBases> dataBases;
-    private Map<DataBases,EmbeddedDataBaseServer> servers;
-    
-    public DataBasesServiceImpl(){
-        servers = new HashMap<DataBases,EmbeddedDataBaseServer>();
+    private Map<DataBases, EmbeddedDataBaseServer> servers;
+
+    public DataBasesServiceImpl() {
+        servers = new HashMap<DataBases, EmbeddedDataBaseServer>();
         servers.put(DataBases.CASSANDRA, DatabasesFactory.getInstance().getCassandraService());
         servers.put(DataBases.HQLDB, DatabasesFactory.getInstance().getHsqlService());
         servers.put(DataBases.MONGO, DatabasesFactory.getInstance().getMongoService());
         servers.put(DataBases.REDIS, DatabasesFactory.getInstance().getRedisSerivce());
     }
-    
+
     @Override
     public void startServers() {
-        dataBases.stream().forEach(dataBase->{
+        dataBases.stream().forEach(dataBase -> {
             servers.get(dataBase).start_server();
         });
     }
 
     @Override
     public void shutdownServers() {
-        dataBases.stream().forEach(dataBase->{
+        dataBases.stream().forEach(dataBase -> {
             servers.get(dataBase).shutdown_server();
         });
-        
+
     }
 
     @Override
     public void enrollDataBases(List<DataBases> dataBases) {
         this.dataBases = dataBases;
-     
+
     }
 
     @Override

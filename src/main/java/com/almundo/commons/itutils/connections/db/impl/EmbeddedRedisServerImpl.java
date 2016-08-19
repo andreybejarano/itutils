@@ -11,7 +11,7 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
 
     private RedisServer server;
     private Integer port;
-    private final static String REDIS_VERSION = "2.8.9"; 
+    private final static String REDIS_VERSION = "2.8.9";
 
     @Override
     public void start_server() {
@@ -19,10 +19,10 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
             port = PortsManagerUtils.findFreePort();
             server = new RedisServer(REDIS_VERSION, port);
             server.start();
-           YamlUtils.addDbPort(port, DataBasesPort.REDIS_PORT);
+            YamlUtils.addDbPort(port, DataBasesPort.REDIS_PORT);
         } catch (Exception e) {
             throw new IllegalAccessError("Failed to init Redis Server");
-            
+
         }
 
     }
@@ -39,7 +39,5 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
     public Integer getPort() {
         return port;
     }
-    
-    
 
 }

@@ -2,11 +2,7 @@ package com.almundo.commons.itutils.utils;
 
 public enum DataBases {
 
-
-    MONGO("mongo"), 
-    HQLDB("hsql"), 
-    CASSANDRA("cassandra"),
-    REDIS("redis");
+    MONGO("mongo"), HQLDB("hsql"), CASSANDRA("cassandra"), REDIS("redis");
 
     private String value;
 

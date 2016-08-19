@@ -11,36 +11,36 @@ import com.almundo.commons.itutils.connections.db.impl.EmbeddedRedisServerImpl;
 public class DatabasesFactory {
 
     private static DatabasesFactory instance = new DatabasesFactory();;
-    
-    private EmbeddedDataBaseServer mongoService =null; 
-    private EmbeddedDataBaseServer hqlService =null; 
-    private EmbeddedDataBaseServer cassandraService=null;
+
+    private EmbeddedDataBaseServer mongoService = null;
+    private EmbeddedDataBaseServer hqlService = null;
+    private EmbeddedDataBaseServer cassandraService = null;
     private EmbeddedDataBaseServer redisService = null;
-    
-    public EmbeddedDataBaseServer getMongoService(){
-        if(Objects.isNull(mongoService)){
+
+    public EmbeddedDataBaseServer getMongoService() {
+        if (Objects.isNull(mongoService)) {
             mongoService = new EmbeddedMongoServerImpl();
         }
         return mongoService;
     }
-    
-    public EmbeddedDataBaseServer getHsqlService(){
-        if(Objects.isNull(hqlService)){
+
+    public EmbeddedDataBaseServer getHsqlService() {
+        if (Objects.isNull(hqlService)) {
             hqlService = new EmbeddedHsqlServerImpl();
         }
         return hqlService;
-        
+
     }
-    
-    public EmbeddedDataBaseServer getCassandraService(){
-        if(Objects.isNull(cassandraService)){
+
+    public EmbeddedDataBaseServer getCassandraService() {
+        if (Objects.isNull(cassandraService)) {
             cassandraService = new EmbeddedCassandraServerImpl();
         }
         return cassandraService;
     }
-    
-    public EmbeddedDataBaseServer getRedisSerivce(){
-        if(Objects.isNull(redisService)){
+
+    public EmbeddedDataBaseServer getRedisSerivce() {
+        if (Objects.isNull(redisService)) {
             redisService = new EmbeddedRedisServerImpl();
         }
         return redisService;
@@ -50,7 +50,4 @@ public class DatabasesFactory {
         return instance;
     }
 
-  
-    
-    
 }

@@ -22,7 +22,7 @@ public class EmbeddedHsqlServerImpl implements EmbeddedDataBaseServer {
         server.setAddress("127.0.0.1");
         server.start();
         YamlUtils.addDbPort(hsqlPort, DataBasesPort.HQLDB_PORT);
-        
+
     }
 
     @Override

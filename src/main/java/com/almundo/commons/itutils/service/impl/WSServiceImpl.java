@@ -17,11 +17,10 @@ public class WSServiceImpl implements WSService {
 
     @Override
     public void startMockServers() {
-       mockServer.startMockServer();
-       YamlUtils.addWSPort(mockServer.getPort());
+        mockServer.startMockServer();
+        YamlUtils.addWSPort(mockServer.getPort());
     }
 
-   
     @Override
     public void shutdownMockServers() {
         mockServer.shutdownServer();
@@ -31,14 +30,12 @@ public class WSServiceImpl implements WSService {
     @Override
     public void enrollEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder) {
         mockServer.enrollEndPoint(endpointBuilder);
-        
+
     }
 
     @Override
     public Integer getWsPort() {
         return mockServer.getPort();
     }
-    
-    
 
 }

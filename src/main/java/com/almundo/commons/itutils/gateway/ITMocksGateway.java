@@ -13,46 +13,43 @@ public class ITMocksGateway {
 
     private DataBasesService dbService;
     private WSService wsService;
-   
-    
-    public ITMocksGateway(DataBasesService dbService, WSService wsService){
+
+    public ITMocksGateway(DataBasesService dbService, WSService wsService) {
         this.dbService = dbService;
         this.wsService = wsService;
     }
-    
-    public void startEmbeddedDbs(List<DataBases> dataBases){
+
+    public void startEmbeddedDbs(List<DataBases> dataBases) {
         dbService.enrollDataBases(dataBases);
         dbService.startServers();
     }
-    
-    public  void startWSMocks(){
-          wsService.startMockServers();
+
+    public void startWSMocks() {
+        wsService.startMockServers();
     }
-    
-    public void shutdownDbs(){
+
+    public void shutdownDbs() {
         dbService.shutdownServers();
     }
-    
-       
-    public void shutdownWsMocks(){
+
+    public void shutdownWsMocks() {
         wsService.shutdownMockServers();
     }
-    
-    public Integer dbPort(DataBases dataBase){
+
+    public Integer dbPort(DataBases dataBase) {
         return dbService.getPort(dataBase);
     }
-    
-    public Integer wsPort(){
+
+    public Integer wsPort() {
         return wsService.getWsPort();
     }
-    
-    public void addEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder){
+
+    public void addEndpoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder) {
         wsService.enrollEndpoint(endpointBuilder);
     }
-    
-    public void generateIntegrationYml(){
+
+    public void generateIntegrationYml() {
         YamlUtils.generateIntegrationYml();
     }
-    
-   
+
 }

@@ -16,38 +16,35 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 
 public class EmbeddedMongoServerImpl implements EmbeddedDataBaseServer {
 
-    
-   private  MongodExecutable mongodExecutable;
-   private Integer mongoPort;
-   
-       
+    private MongodExecutable mongodExecutable;
+    private Integer mongoPort;
+
     @Override
     public void start_server() {
         mongodExecutable = prepareServer();
         try {
-            mongodExecutable .start();
+            mongodExecutable.start();
             YamlUtils.addDbPort(mongoPort, DataBasesPort.MONGO_PORT);
         } catch (IOException e) {
             throw new IllegalAccessError("Failed to initialize embedded mongo server");
         }
-        
+
     }
 
     @Override
     public void shutdown_server() {
         mongodExecutable.stop();
-        
+
     }
 
-       
-    private  MongodExecutable prepareServer(){
+    private MongodExecutable prepareServer() {
         mongoPort = PortsManagerUtils.findFreePort();
         try {
             MongodStarter mongodStarter = MongodStarter.getDefaultInstance();
             IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.V2_4)
-                                        .net(new Net(mongoPort,false))
-                                        .build();
-            return  mongodStarter.prepare(mongodConfig);
+                    .net(new Net(mongoPort, false))
+                    .build();
+            return mongodStarter.prepare(mongodConfig);
         } catch (Exception e) {
             throw new IllegalAccessError("Failed to prepare embedded mongo server");
         }

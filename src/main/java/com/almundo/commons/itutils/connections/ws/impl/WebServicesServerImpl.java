@@ -16,7 +16,7 @@ public class WebServicesServerImpl implements WebServicesServer {
         this.port = PortsManagerUtils.findFreePort();
         this.server = new WireMockServer(port);
         WireMock.configureFor(port);
-    
+
     }
 
     @Override
@@ -31,7 +31,7 @@ public class WebServicesServerImpl implements WebServicesServer {
     }
 
     @Override
-    public void enrollEndPoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder){
+    public void enrollEndPoint(RemoteMappingBuilder<RemoteMappingBuilder, ScenarioMappingBuilder> endpointBuilder) {
         WireMock.stubFor(endpointBuilder);
 
     }
@@ -39,7 +39,5 @@ public class WebServicesServerImpl implements WebServicesServer {
     public Integer getPort() {
         return port;
     }
-    
-    
 
 }
