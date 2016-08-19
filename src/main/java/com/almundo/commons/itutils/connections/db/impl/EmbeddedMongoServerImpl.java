@@ -20,7 +20,7 @@ public class EmbeddedMongoServerImpl implements EmbeddedDataBaseServer {
     private Integer mongoPort;
 
     @Override
-    public void start_server() {
+    public void startServer() {
         mongodExecutable = prepareServer();
         try {
             mongodExecutable.start();
@@ -32,7 +32,7 @@ public class EmbeddedMongoServerImpl implements EmbeddedDataBaseServer {
     }
 
     @Override
-    public void shutdown_server() {
+    public void shutdownServer() {
         mongodExecutable.stop();
 
     }

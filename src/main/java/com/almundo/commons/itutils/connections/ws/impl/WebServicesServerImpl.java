@@ -36,6 +36,7 @@ public class WebServicesServerImpl implements WebServicesServer {
 
     }
 
+    @Override
     public Integer getPort() {
         return port;
     }

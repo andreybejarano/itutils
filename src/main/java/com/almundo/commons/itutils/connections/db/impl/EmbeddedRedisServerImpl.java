@@ -14,7 +14,7 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
     private final static String REDIS_VERSION = "2.8.9";
 
     @Override
-    public void start_server() {
+    public void startServer() {
         try {
             port = PortsManagerUtils.findFreePort();
             server = new RedisServer(REDIS_VERSION, port);
@@ -28,14 +28,15 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
     }
 
     @Override
-    public void shutdown_server() {
+    public void shutdownServer() {
         try {
             server.stop();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             throw new IllegalAccessError("Failed to stop Redis Server");
         }
     }
 
+    @Override
     public Integer getPort() {
         return port;
     }
