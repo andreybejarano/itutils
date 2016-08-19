@@ -10,7 +10,7 @@ import com.almundo.commons.itutils.connections.db.impl.EmbeddedRedisServerImpl;
 
 public class DatabasesFactory {
 
-    private static DatabasesFactory instance = new DatabasesFactory();;
+    private static DatabasesFactory instance = new DatabasesFactory();
 
     private EmbeddedDataBaseServer mongoService = null;
     private EmbeddedDataBaseServer hqlService = null;

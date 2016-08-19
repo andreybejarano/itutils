@@ -2,9 +2,9 @@ package com.almundo.commons.itutils.connections;
 
 public interface EmbeddedDataBaseServer {
 
-    public void startServer();
+    public int startServer();
 
     public void shutdownServer();
 
-    public Integer getPort();
+    public void runScript(String scriptPath);
 }
