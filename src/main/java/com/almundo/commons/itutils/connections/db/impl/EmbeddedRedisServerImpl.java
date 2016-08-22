@@ -1,9 +1,7 @@
 package com.almundo.commons.itutils.connections.db.impl;
 
 import com.almundo.commons.itutils.connections.EmbeddedDataBaseServer;
-import com.almundo.commons.itutils.utils.DataBasesPort;
 import com.almundo.commons.itutils.utils.PortsManagerUtils;
-import com.almundo.commons.itutils.utils.YamlUtils;
 
 import redis.embedded.RedisServer;
 
@@ -14,12 +12,12 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
     private final static String REDIS_VERSION = "2.8.9";
 
     @Override
-    public void startServer() {
+    public int startServer() {
         try {
             port = PortsManagerUtils.findFreePort();
             server = new RedisServer(REDIS_VERSION, port);
             server.start();
-            YamlUtils.addDbPort(port, DataBasesPort.REDIS_PORT);
+            return port;
         } catch (Exception e) {
             throw new IllegalAccessError("Failed to init Redis Server");
 
@@ -37,8 +35,8 @@ public class EmbeddedRedisServerImpl implements EmbeddedDataBaseServer {
     }
 
     @Override
-    public Integer getPort() {
-        return port;
+    public void runScript(String scriptPath) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
 }

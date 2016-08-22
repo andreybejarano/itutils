@@ -1,16 +1,14 @@
 package com.almundo.commons.itutils.service;
 
-import java.util.List;
+import java.util.Optional;
 
-import com.almundo.commons.itutils.utils.DataBases;
+import com.almundo.commons.itutils.utils.DataBase;
 
 public interface DataBasesService {
 
-    public void enrollDataBases(List<DataBases> dataBases);
-
-    public void startServers();
+    public int startServer(DataBase dataBase, Optional<String> scriptPath);
+    
 
     public void shutdownServers();
 
-    public Integer getPort(DataBases dataBase);
 }
