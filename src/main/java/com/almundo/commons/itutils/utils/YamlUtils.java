@@ -22,11 +22,15 @@ public class YamlUtils {
             urlReadBuilder.append(System.getProperty("user.dir"));
             urlReadBuilder.append("/src/test/resources/application-template.yml");
             Path readPath = Paths.get(urlReadBuilder.toString());
+
             Path writePath = Paths
                     .get(YamlUtils.class.getClassLoader()
                             .getResource("application-template.yml")
                             .getPath());
+
             writePath = writePath.resolveSibling("application.yml");
+
+            Logger.info("Saving application.ylm in {}", writePath);
             Charset charset = StandardCharsets.UTF_8;
             String content = new String(Files.readAllBytes(readPath), charset);
             Set<DataBase> portsVariables = dbPorts.keySet();
@@ -36,7 +40,8 @@ public class YamlUtils {
             }
             content = content.replaceAll(MOCK_SERVER_PORT, mockServerPort.toString());
 
-            Files.write(writePath, content.getBytes(charset));
+            Files.write(writePath.getFileName().toAbsolutePath(), content.getBytes(charset));
+
         } catch (Exception e) {
             Logger.error("Failed to replace ports variables");
         }
