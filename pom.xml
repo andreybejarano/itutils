@@ -9,14 +9,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>itutils</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.2</version>
 	<packaging>jar</packaging>
 
 	<scm>
 		<connection>scm:git:git@github.com:almundocom/itutils.git</connection>
 		<developerConnection>scm:git:git@github.com:almundocom/itutils.git</developerConnection>
 		<url>scm:git:git@github.com:almundocom/itutils.git</url>
-		<tag>itutils-1.0.0</tag>
+		<tag>itutils-0.1.2</tag>
 	</scm>
 
 	<properties>
