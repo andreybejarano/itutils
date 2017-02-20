@@ -2,6 +2,7 @@ package com.almundo.commons.itutils.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import com.almundo.commons.itutils.service.DataBasesService;
@@ -63,8 +64,12 @@ public class ITUtils {
     }
 
     public void shutDownServers() {
-        this.dbService.shutdownServers();
-        this.wireMockServer.shutdown();
+        if(!Objects.isNull(this.dbService)){
+            this.dbService.shutdownServers();
+        }
+        if(!Objects.isNull(this.wireMockServer)){
+            this.wireMockServer.shutdown();
+        }
     }
 
     public void generateIntegrationYml() {
