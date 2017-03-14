@@ -16,7 +16,7 @@
 		<connection>scm:git:git@github.com:almundocom/itutils.git</connection>
 		<developerConnection>scm:git:git@github.com:almundocom/itutils.git</developerConnection>
 		<url>scm:git:git@github.com:almundocom/itutils.git</url>
-		<tag>itutils-1.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<properties>
