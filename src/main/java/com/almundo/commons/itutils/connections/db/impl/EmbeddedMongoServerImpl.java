@@ -22,7 +22,7 @@ public class EmbeddedMongoServerImpl implements EmbeddedDataBaseServer {
             port = PortsManagerUtils.findFreePort();
             MongodStarter mongodStarter = MongodStarter.getDefaultInstance();
             IMongodConfig mongodConfig = new MongodConfigBuilder()
-                    .version(Version.Main.V2_4)
+                    .version(Version.Main.V3_4)
                     .net(new Net(port, false))
                     .build();
 
