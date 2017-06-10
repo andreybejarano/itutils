@@ -13,6 +13,19 @@ You can also:
 
 ### Usage
 
+*Step 1*: Add maven dependency under _pom.xml_.
+
+```mvn
+<dependency>
+    <groupId>com.almundo.commons</groupId>
+    <artifactId>itutils</artifactId>
+    <version>0.1.4</version>
+    <scope>test</scope>
+</dependency>
+```
+
+*Step 2*: Init test context.
+
 ```java
     @BeforeClass
     public static void init() throws Exception {
@@ -35,7 +48,7 @@ In this library we use [wiremock](http://wiremock.org/docs/) to mock web service
 ```java
     ITUtils itUtils = ITUtilsFactory.getITUtils();
     WireMockServer wireMockServer = itUtils.getWireMockServer();
-    
+
     wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/api/foo"))
         .willReturn(WireMock.aResponse()
             .withStatus(200)
@@ -72,4 +85,3 @@ And then before your tests:
         itUtils.generateIntegrationYml();
     }
 ```
-
